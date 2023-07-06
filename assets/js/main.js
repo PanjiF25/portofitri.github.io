@@ -61,7 +61,7 @@ function activeWork() {
 
 linkWork.forEach((L) => L.addEventListener("click", activeWork));
 
-/*===== Work Popup =====*/
+/*===== Work Popup IMG =====*/
 document.addEventListener("click", (e) => {
   if (e.target.classList.contains("work__button")) {
     togglePortfolioPopup();
@@ -79,6 +79,26 @@ function portfolioItemDetails(portfolioItem) {
   document.querySelector(".pp__thumbnail img").src = portfolioItem.querySelector(".work__img").src;
   document.querySelector(".portfolio__popup-subtitle span").innerHTML = portfolioItem.querySelector(".work__title").innerHTML;
   document.querySelector(".portfolio__popup-body").innerHTML = portfolioItem.querySelector(".portfolio__item-details").innerHTML;
+}
+
+/*===== Work Popup Video =====*/
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("work__button-video")) {
+    togglePortfolioPopupVideo();
+    portfolioItemDetailsVideo(e.target.parentElement);
+  }
+});
+
+function togglePortfolioPopupVideo() {
+  document.querySelector(".portfolio__popup-video").classList.toggle("open");
+}
+
+document.querySelector(".portfolio__popup-close-video").addEventListener("click", togglePortfolioPopupVideo);
+
+function portfolioItemDetailsVideo(portfolioItemVideo) {
+  document.querySelector(".pp__thumbnail video").src = portfolioItemVideo.querySelector(".work__video").src;
+  document.querySelector(".portfolio__popup-subtitle-video span").innerHTML = portfolioItemVideo.querySelector(".work__title-video").innerHTML;
+  document.querySelector(".portfolio__popup-body-video").innerHTML = portfolioItemVideo.querySelector(".portfolio__item-details-video").innerHTML;
 }
 
 /*=============== SERVICES MODAL ===============*/
